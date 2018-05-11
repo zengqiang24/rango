@@ -14,24 +14,21 @@ Including another URLconf
     2. Import the include() function: from django.conf.urls import url, include
     3. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import url, include, patterns
+from django.conf.urls import url, include
 from django.contrib import admin
 # At the top of your urls.py file, add the following line:
 from django.conf import settings
+from django.conf.urls.static import static
 
 # UNDERNEATH your urlpatterns definition, add the following two lines:
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^rango/',include('rango.urls')),
+    url(r'^rango/', include('rango.urls')),
 ]
 
 if settings.DEBUG:
-    urlpatterns += patterns(
-        'django.views.static',
-        (r'^media/(?P<path>.*)',
-        'serve',
-        {'document_root': settings.MEDIA_ROOT}), )
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-print('urlpatterns:',urlpatterns)
+print('urlpatterns:', urlpatterns)
