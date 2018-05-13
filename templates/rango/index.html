@@ -17,7 +17,16 @@ hello world! <br/>
 {% else %}
     <strong>There is no categories present</strong>
 {% endif %}
-<img src="{% static "images/avatar.png" %}"/>
+
+{% if category_views_list %}
+    <ul>
+      {%  for category_views in category_views_list %}
+          <li><a href="/rango/category/{{ category_views.slug }}">{{ category_views.name }}</a></li>
+      {% endfor %}
+    </ul>
+{% endif %}
 <a href="/rango/about/">About</a><br/>
+<a href="/rango/add_category/">Add a New Category</a><br />
+
 </body>
 </html>
