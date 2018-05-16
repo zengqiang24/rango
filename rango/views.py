@@ -58,4 +58,6 @@ def add_page(request, category_name_slug):
 
     if request.method == 'POST':
         form = PageForm(request.POST)
-
+        page=form.save()
+        page.category=cat
+        page.views=0
