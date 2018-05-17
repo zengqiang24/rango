@@ -16,9 +16,9 @@
         {% endfor %}
     </ul>
     {% else %}
-    no pages in the category
+    no pages in the category <br />
     {% endif %}
-    <a href="/rango/add_page/{{{category.slug }}">add new Page</a>
+    <a href="/rango/category/{{category.slug }}/add_page">add new Page</a>
 {% else %}
     the specified  category {{ category_name }} doesn't exit!
 {% endif %}
