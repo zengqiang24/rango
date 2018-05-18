@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from rango.models import Category
 from django.http import HttpResponse
 from rango.models import Page
-from rango.forms import CategoryForm, PageForm
+from rango.forms import CategoryForm, PageForm, UserForm, UserProfileForm
 
 
 def index(request):
@@ -73,3 +73,14 @@ def add_page(request, category_name_slug):
         form= PageForm()
     context_dict={'form':form,'category':cat}
     return render(request,'rango/add_page.html',context_dict)
+
+def register(request):
+    registered=False
+
+    if(request.method == 'POST'):
+        user_form = UserForm(data=request.POST)
+        profile_form = UserProfileForm(data=request.POST)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save(commit=True)
+            
