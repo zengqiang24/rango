@@ -1,4 +1,5 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from rango.models import Category
 from django.http import HttpResponse, HttpResponseRedirect
@@ -13,7 +14,7 @@ def index(request):
     context_dict['category_views_list'] = category_views_list
     return render(request, 'rango/index.html', context_dict)
 
-
+@login_required
 def about(request):
     context_dict = {"about": "this is qiang blogs"}
     return render(request, 'rango/about.html', context_dict)
@@ -132,3 +133,12 @@ def user_login(request):
             return HttpResponse("Invalid login details supplied.")
     else:
         return render(request, "rango/login.html", {})
+
+@login_required
+def restricted(request):
+    return HttpResponse("Since you're logged in, you can see this text!")
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect('/rango/')
