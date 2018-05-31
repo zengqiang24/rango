@@ -18,7 +18,9 @@
     {% else %}
     no pages in the category <br />
     {% endif %}
+    {% if user.is_authenticated %}
     <a href="/rango/category/{{category.slug }}/add_page">add new Page</a>
+    {% endif %}
 {% else %}
     the specified  category {{ category_name }} doesn't exit!
 {% endif %}
