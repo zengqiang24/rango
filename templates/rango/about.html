@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 {% load static %}
+{% block title %}About{% endblock %}
+{% block body_block %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>About</title>
-</head>
-<body>
-    <span>{{ about }}</span><a href='/rango'>Index </a>
-            <img src="{% static "images/avatar.png" %}" />
+    <head>
+        <meta charset="UTF-8">
+        <title>About</title>
+    </head>
 
-<a></a>
-</body>
-</html>
+    <span>{{ about }}</span><a href='{% url 'index' %}'>Index </a>
+    <img src="{% static "images/avatar.png" %}"/>
+
+    <a></a>
+{% endblock %}
