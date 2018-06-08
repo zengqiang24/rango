@@ -1,18 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 {% load static %}
+{% block title %}About{% endblock %}
+{% block body_block %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>About</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <title>About</title>
+    </head>
 <div>
     visits:{{ visits }}
 </div>
-    <span>{{ about }}</span><a href='/rango'>Index </a>
-            <img src="{% static "images/avatar.png" %}" />
+    <span>{{ about }}</span><a href='{% url 'index' %}'>Index </a>
+    <img src="{% static "images/avatar.png" %}"/>
 
-<a></a>
-</body>
-</html>
+    <a></a>
+{% endblock %}
