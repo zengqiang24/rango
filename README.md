@@ -1,2 +1,2 @@
 # rango
-learning Django framework by developing a  website
+learning Django framework to develop a  website
